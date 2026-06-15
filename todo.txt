@@ -1,0 +1,14 @@
+Системы исчисления
+https://www.youtube.com/watch?v=1h9U8kI_X0I
+https://www.youtube.com/watch?v=Z9AlcwUvp44
+https://www.youtube.com/watch?v=3Ht3pyY7Zoc
+
+Потоки
+
+CMake 
+https://cmake.org/cmake/help/latest/guide/tutorial/Getting%20Started%20with%20CMake.html
+
+
+C++
+	enable_shated_from_this
+	std::string_view
