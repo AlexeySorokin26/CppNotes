@@ -15,3 +15,4 @@ C++
 	sstream https://www.youtube.com/watch?v=1uRXY8CjJAM паттерны использования 
 	ifstream
 	ofstream
+	std::map методы отработать сделать примеры для практики чат спроси 
