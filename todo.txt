@@ -19,6 +19,7 @@ C++
 	ofstream
 	std::map методы отработать сделать примеры для практики чат спроси 
 	отличие потока от процесса 
+	ranges
 Qt 
 	Model View Data архитектура может на примере CheckableTableModel
 
@@ -37,7 +38,18 @@ back_inserter
                       [](const std::string& s) { return QString::fromStdString(s); });
         selectedClassesLineEdit->setText(qList.join(", "));
 
-аналог
-	for (const std::string& s : selectedClasses) {
-    		qList.push_back(QString::fromStdString(s));
-	}
+	аналог
+		for (const std::string& s : selectedClasses) {
+    			qList.push_back(QString::fromStdString(s));
+		}
+
+Ranges c++20 
+		std::ranges — это слой поверх классических алгоритмов из <algorithm>, появившийся в C++20. 
+		Идея простая: классический std::find принимает пару итераторов (begin, end), 
+		а std::ranges::find принимает сам контейнер как единое целое (range — это что угодно, у чего есть begin()/end()).
+
+// классика: руками пишешь begin/end
+std::find(partitionClasses.begin(), partitionClasses.end(), clName) == partitionClasses.end()
+
+// ranges: передаёшь контейнер
+std::ranges::find(partitionClasses, clName) == partitionClasses.end()
