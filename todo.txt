@@ -17,3 +17,6 @@ C++
 	ofstream
 	std::map методы отработать сделать примеры для практики чат спроси 
 	отличие потока от процесса 
+	back_inserter
+Qt 
+	Model View Data архитектура может на примере CheckableTableModel
