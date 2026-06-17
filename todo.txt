@@ -4,6 +4,8 @@
 	https://www.youtube.com/watch?v=3Ht3pyY7Zoc
 
 Потоки
+	std::packaged_task
+	std::future 
 
 CMake 
 	https://cmake.org/cmake/help/latest/guide/tutorial/Getting%20Started%20with%20CMake.html
@@ -17,6 +19,25 @@ C++
 	ofstream
 	std::map методы отработать сделать примеры для практики чат спроси 
 	отличие потока от процесса 
-	back_inserter
 Qt 
 	Model View Data архитектура может на примере CheckableTableModel
+
+Алгоритмы
+	sha
+
+std::map
+	итерация
+	for(auot& [value, key] : map){
+		key = false;
+	}
+
+back_inserter 
+	QStringList qList;
+        std::transform(selectedClasses.begin(), selectedClasses.end(), std::back_inserter(qList),
+                      [](const std::string& s) { return QString::fromStdString(s); });
+        selectedClassesLineEdit->setText(qList.join(", "));
+
+аналог
+	for (const std::string& s : selectedClasses) {
+    		qList.push_back(QString::fromStdString(s));
+	}
