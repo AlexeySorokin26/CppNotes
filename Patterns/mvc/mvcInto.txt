@@ -7,10 +7,12 @@ Controller оповещает модель если пользователь п�
 в Qt есть view widgets они включают в себе и model и view (но это плохо)
 примеры QListWidget QTableWidget QTreeWidget
 
+todo https://www.codeguru.com/cplusplus/implementing-an-mvc-model-with-the-qt-c-framework/
+     https://www.udemy.com/course/qt6-c-gui-widgets-tutorial-for-beginners/learn/lecture/31435128#overview
+
 https://www.codeguru.com/cplusplus/video-game-careers/
 https://www.youtube.com/watch?v=xVZx57kxgyg
 
-user->uses->controller->update model->updates view->show to user
 
 #include <iostream>
 #include <string>
@@ -67,3 +69,12 @@ int main() {
     controller.updateView();
     return 0;
 }
+
+user->uses->controller->update model->updates view->show to user
+
+Чтобы получить доступ к данным мы используем index который QModelIndex 
+казалось бы можно просто дать номер строки и столбца 
+но проблема в том что метод data у модели должен работать с любым QListView, QTableView, QTreeView. А там итерация своя 
+например таблицам нужны row col у списка только row а у дерева вообще не понятно что    
+
+QListWidget включает в себе модель и представление 
