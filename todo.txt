@@ -20,6 +20,7 @@ C++
 	std::map методы отработать сделать примеры для практики чат спроси 
 	отличие потока от процесса 
 	ranges
+	if constexpr
 Qt 
 	Model View Data архитектура может на примере CheckableTableModel
 
