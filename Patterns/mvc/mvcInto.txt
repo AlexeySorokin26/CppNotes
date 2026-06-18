@@ -1,0 +1,69 @@
+Model View Controller паттерн 
+Model отвечает за хранение данных
+View отвечает за их оттобрдажение 
+Controller оповещает модель если пользователь поменял данные 
+в qt нет controller там есть delegate
+чтобы коммуницировать между view и model используются signal slots 
+в Qt есть view widgets они включают в себе и model и view (но это плохо)
+примеры QListWidget QTableWidget QTreeWidget
+
+https://www.codeguru.com/cplusplus/video-game-careers/
+https://www.youtube.com/watch?v=xVZx57kxgyg
+
+user->uses->controller->update model->updates view->show to user
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+private:
+    string rollNo;
+    string name;
+
+public:
+    string getRollNo() { return rollNo; }
+    void setRollNo(string rollNo) { this->rollNo = rollNo; }
+    string getName() { return name; }
+    void setName(string name) { this->name = name; }
+};
+
+class StudentView {
+public:
+    void printStudentDetails(string studentName, string studentRollNo) {
+        cout << "Student:\n";
+        cout << "Name: " << studentName << "\n";
+        cout << "Roll No: " << studentRollNo << "\n";
+    }
+};
+
+class StudentController {
+private:
+    Student model;
+    StudentView view;
+
+public:
+    StudentController(Student model, StudentView view) : model(model), view(view) {}
+    void setStudentName(string name) { model.setName(name); }
+    string getStudentName() { return model.getName(); }
+    void setStudentRollNo(string rollNo) { model.setRollNo(rollNo); }
+    string getStudentRollNo() { return model.getRollNo(); }
+    void updateView() { view.printStudentDetails(model.getName(), model.getRollNo()); }
+};
+
+Student retriveStudentFromDatabase() {
+    Student student;
+    student.setName("Lokesh Sharma");
+    student.setRollNo("15UCS157");
+    return student;
+}
+
+int main() {
+    Student model = retriveStudentFromDatabase();
+    StudentView view;
+    StudentController controller(model, view);
+    controller.updateView();
+    controller.setStudentName("Vikram Sharma");
+    controller.updateView();
+    return 0;
+}

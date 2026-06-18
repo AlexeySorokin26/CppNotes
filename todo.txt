@@ -54,3 +54,5 @@ std::find(partitionClasses.begin(), partitionClasses.end(), clName) == partition
 
 // ranges: передаёшь контейнер
 std::ranges::find(partitionClasses, clName) == partitionClasses.end()
+
+
