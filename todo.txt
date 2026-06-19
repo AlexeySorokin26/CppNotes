@@ -21,6 +21,7 @@ C++
 	отличие потока от процесса 
 	ranges
 	if constexpr
+	rule of zero is better than rule of 5 
 Qt 
 	Model View Data архитектура может на примере CheckableTableModel
 
@@ -55,4 +56,30 @@ std::find(partitionClasses.begin(), partitionClasses.end(), clName) == partition
 // ranges: передаёшь контейнер
 std::ranges::find(partitionClasses, clName) == partitionClasses.end()
 
+
+rule of zero is better than rule of 5 
+
+struct Chart {
+    std::string title;
+    std::vector<int> data;
+    int sheetIndex = 0;
+
+    // Рукописный move-конструктор — три способа всё испортить:
+    Chart(Chart&& o) noexcept
+        : title(o.title)              // (1) забыл std::move  -> КОПИЯ
+        , data(std::move(o.data))     //     ок
+    {}                                // (2) забыл поле data   -> default (пусто)
+                                      // (3) забыл sheetIndex  -> остаётся 0, не из o
+};
+
+= default означает «компилятор, сгенерируй эту функцию сам». Но в rule of zero вся идея в том, что ты вообще ничего не объявляешь — и компилятор генерирует все спец-функции автоматически. 
+Писать = default для каждой из них — это просто многословный способ получить ровно то же самое, что и при полном молчании. Лишний шум, который противоречит названию «правило нуля».
+
+
+Mime type
+Multipurpose Internet Mail Extensions. 
+Придумали в начале 90-х для электронной почты — письмо тогда было голым текстом, и надо было как-то прицепить картинку или PDF, 
+объяснив почтовику, что вот этот блок байт — JPEG, а не текст. 
+рижилось так удачно, что вылезло далеко за пределы почты: теперь это везде, где данные передаются между программами. 
+Второе, более честное по нынешним временам имя — media type.
 
