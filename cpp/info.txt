@@ -1,0 +1,87 @@
+C++
+	enable_shated_from_this
+	std::string_view
+	sstream https://www.youtube.com/watch?v=1uRXY8CjJAM паттерны использования 
+	ifstream
+	ofstream
+	std::map методы отработать сделать примеры для практики чат спроси 
+	отличие потока от процесса 
+	ranges
+	if constexpr
+	rule of zero is better than rule of 5 
+	назначенные инициализаторы (designated initializers) с++20
+	constexpr
+
+
+
+std::map
+	итерация
+	for(auot& [value, key] : map){
+		key = false;
+	}
+
+back_inserter 
+	QStringList qList;
+        std::transform(selectedClasses.begin(), selectedClasses.end(), std::back_inserter(qList),
+                      [](const std::string& s) { return QString::fromStdString(s); });
+        selectedClassesLineEdit->setText(qList.join(", "));
+
+	аналог
+		for (const std::string& s : selectedClasses) {
+    			qList.push_back(QString::fromStdString(s));
+		}
+
+Ranges c++20 
+		std::ranges — это слой поверх классических алгоритмов из <algorithm>, появившийся в C++20. 
+		Идея простая: классический std::find принимает пару итераторов (begin, end), 
+		а std::ranges::find принимает сам контейнер как единое целое (range — это что угодно, у чего есть begin()/end()).
+
+назначенные инициализаторы (designated initializers) с++20
+		struct FieldConfig {
+    QString key;
+    QString label;
+    FieldType type;
+    QString defaultValue;
+    double min;
+    double max;
+    int decimals;
+    QString tooltip;
+};
+
+{.key = "ch_name",
+ .label = QObject::tr("Channel name:"),
+ .type = CustomInputDialog::FieldType::Text,
+ ...}
+
+ Зачем это вместо обычного {"ch_name", "Channel name:", ...}:
+
+Читаемость — сразу видно, что куда кладётся, не надо помнить порядок полей в объявлении структуры.
+Можно пропускать члены — то, что не указано, инициализируется значением по умолчанию (для min/max/decimals в полях типа Text они просто остаются дефолтными, потому что не нужны).
+Меньше шансов ошибиться, если в структуре много полей одного типа (как тут несколько QString подряд).
+Если мы пропустим то значение поставится дефолтное или то что будет в самой стркутуре
+
+
+// классика: руками пишешь begin/end
+std::find(partitionClasses.begin(), partitionClasses.end(), clName) == partitionClasses.end()
+
+// ranges: передаёшь контейнер
+std::ranges::find(partitionClasses, clName) == partitionClasses.end()
+
+
+rule of zero is better than rule of 5 
+
+struct Chart {
+    std::string title;
+    std::vector<int> data;
+    int sheetIndex = 0;
+
+    // Рукописный move-конструктор — три способа всё испортить:
+    Chart(Chart&& o) noexcept
+        : title(o.title)              // (1) забыл std::move  -> КОПИЯ
+        , data(std::move(o.data))     //     ок
+    {}                                // (2) забыл поле data   -> default (пусто)
+                                      // (3) забыл sheetIndex  -> остаётся 0, не из o
+};
+
+= default означает «компилятор, сгенерируй эту функцию сам». Но в rule of zero вся идея в том, что ты вообще ничего не объявляешь — и компилятор генерирует все спец-функции автоматически. 
+Писать = default для каждой из них — это просто многословный способ получить ровно то же самое, что и при полном молчании. Лишний шум, который противоречит названию «правило нуля».
