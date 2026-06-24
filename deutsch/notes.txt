@@ -1,4 +1,4 @@
-Немецкий
+Akk перед Dat или наоборот
 	Два местоимения Akk vor Dativ bei zwei Personalpronommen  Akkusativpronomen vor Dativpronomen.
 		Ich interresiere mich für das Fahrrad. Kann ich es mir mal ansehen?
 	Два сущ Dat vor Akk 
@@ -11,3 +11,22 @@
 		Vor allem kurze Fragen wirken dadurhc freunlicher. Казаться выглядеть 
 	Halt
 		Es wird halt manchmal ein bisschen lauter. Ну иногда становится шумнее Ну что поделать Уж так 
+
+wie oder als
+    Wie когда предметы одинаковые (как) 
+        Er ist so gross wie ich
+        Sie läuft genause schnell wie er
+    Wie также стоит когда не равенство
+        Ich finde das Design nicht so schön wie bei anderen Modellen 
+    Als когда идет сравнение (чем)
+        Er ist grösser als ich
+        Ich habe mehr als du
+        Das ist besser als nichts
+    Правило ОБЩЕЕ когда форма прилагательного не в сравнительной степени -> wie 
+                                                 в сравнительной степени -> als
+
+
+
+Je 
+    Mit dem ich mich je rasiert habe 
+        Когда либо 
