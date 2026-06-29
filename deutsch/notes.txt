@@ -74,3 +74,7 @@ Lassen
         Ich kann das Raucehn nicht lassen
     Lass uns давайте 
         Lass uns gehen!
+
+
+Der Zug fährt um 18.21 Uhr ab отправляется
+Der Zug kommt um 20 Uhr in Köln an прибывает
