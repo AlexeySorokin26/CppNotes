@@ -78,3 +78,9 @@ Lassen
 
 Der Zug fährt um 18.21 Uhr ab отправляется
 Der Zug kommt um 20 Uhr in Köln an прибывает
+
+Zeit Wie spöt ist es? Wie viel Uhr ist es? Wann triffst du mich? Wie lange dauert der Film? Wann ist das Schwimmbad geöffnet? Wann gehen wir ins Theater? 
+    halb fünf 4-30
+    viertel nach fünf 5-15
+    kurz von fünf 4-58
+    zwanzig vor fünf 4-40
