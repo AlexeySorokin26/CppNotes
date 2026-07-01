@@ -27,3 +27,11 @@ git push --force-with-lease говорит: «переклей на мой ко�
 «stale info» = эта проверка не прошла. #3 ≠ #2. Lease затормозил именно для того, чтобы ты вслепую не затёр чужой коммит.
 
 Прикладной итог для тебя: git fetch обновит #2 до фактического #3. 
+
+
+
+даст список всех веток, которые начинаются с твоей ветки, отсортированных по дате последнего коммита.
+gitNewBranch() {
+    git for-each-ref --sort=-committerdate "refs/heads/$1*" --format='%(committerdate:relative)%09%(refname:short)'
+}
+использование gitNewBranch IP-3908
