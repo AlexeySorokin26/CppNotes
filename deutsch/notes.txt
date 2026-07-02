@@ -84,3 +84,41 @@ Zeit Wie spöt ist es? Wie viel Uhr ist es? Wann triffst du mich? Wie lange daue
     viertel nach fünf 5-15
     kurz von fünf 4-58
     zwanzig vor fünf 4-40
+
+der Körper und das Gesicht
+    der Kopf голова
+    das Bein нога 
+    der Arm рука 
+    der Fuss ступня
+    die Haare волосы
+    der Rücken спина
+    der Bauch живот
+    der Finger палец
+    die Hand кисть
+
+    das Auge
+    das Ohr
+    der Mund
+    die Nase
+    der Hals
+
+die Wohnung 
+    das Bad
+    die Küche
+    das Schlafzimmer 
+    das Arbaeitszimmer
+    das Wohnzimmer
+    die Treppe
+    die Garage
+    das Sofa 
+    das Bett 
+    der Schrenak 
+    der Herd
+    die Dusche
+    der Stuhle
+    der Tisch
+    das Regal
+    das Bild 
+    die Toilette
+
+
