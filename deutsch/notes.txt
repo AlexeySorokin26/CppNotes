@@ -121,4 +121,24 @@ die Wohnung
     das Bild 
     die Toilette
 
+Wege finden
+    nach Italien
+    nach Leipzig
+    mit dem Auto
+    mit dem Zug 
+    mit dem Bus
+    mit dem Fahrrad
+    zu Fuss
+    Wie komme ich zum Bahnhof?
+    Wie komme ich zur Post?
+    Wie komme ich zum Flughafen?
+
+    Du fährst mit dem Auto nach Italien.
+    Du fährst mit dem Zug nach Leipzig.
+    Du nimmst die U-Bahn zum Flughafen.
+    Du nimmst die Alte Darfstrasse bis zur Kreuzung und biegst dann links ab.
+    
+
+
+
 
