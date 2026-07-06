@@ -24,3 +24,13 @@ v.emplace(v.begin(), "x");             // сконструировать на м
 std::set<std::string> s;
 s.insert(std::string("a"));  // готовый объект
 s.emplace("a");              // строим string("a") прямо в узле дерева
+
+Ось 1 — куда кладём:
+
+в конец → push_back / emplace_back
+в произвольную позицию (нужен итератор) → insert / emplace
+
+Ось 2 — что передаём:
+
+готовый объект (копируем или двигаем) → push_back / insert
+аргументы конструктора, объект строится прямо в контейнере → emplace_back / emplace
