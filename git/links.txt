@@ -35,3 +35,7 @@ gitNewBranch() {
     git for-each-ref --sort=-committerdate "refs/heads/$1*" --format='%(committerdate:relative)%09%(refname:short)'
 }
 использование gitNewBranch IP-3908
+
+git clean -f -d удалит файлы которые мы не загитили 
+
+symlink 
