@@ -137,8 +137,11 @@ Wege finden
     Du fährst mit dem Zug nach Leipzig.
     Du nimmst die U-Bahn zum Flughafen.
     Du nimmst die Alte Darfstrasse bis zur Kreuzung und biegst dann links ab.
+
+    Nehmen Sie die Strassenbahn Nummer 5. An der Haltestelle Clemenstrasse steigen Sie um. 
+    Gehen Sie an der Ampel links und dann wieder rechts. Das Cafe sehen Sie auf der rechten Seite.
     
-
-
-
-
+Zeit
+    Wir haben erst nächste Woche Zeit.
+    Was machen Sie in Ihrer Freizeit?
+    Was sind Ihre Hobbys?
