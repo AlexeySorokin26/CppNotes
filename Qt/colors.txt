@@ -1,0 +1,25 @@
+QColor      — оттенок
+  ↓ вложен в
+QBrush      — заливка (цвет + узор)      QPen — линия (цвет + толщина + стиль)
+  ↓ используются
+QPainter    — рисует ими на экране
+  ↑ настройки берёт из
+QPalette    — цветовая схема виджета
+QFont       — шрифт (отдельная ось)
+
+QPalette::Text — цвет текста в полях/таблицах (то, что ты только что поставил)
+QPalette::Base — фон таких полей
+QPalette::Window — фон окна
+QPalette::WindowText — текст на окне (метки и т.п.)
+QPalette::Highlight — цвет выделенной строки
+QPalette::HighlightedText — текст в выделенной строке
+QPalette::Button / ButtonText — кнопки
+QPalette::ToolTipBase / ToolTipText — подсказки
+
+QColor  →  лежит внутри  →  QBrush  →  лежит внутри  →  QPalette
+
+QBrush b(Qt::red);
+QColor c = b.color();   // вынули цвет ИЗ кисти — вот вложенность
+
+QBrush textBrush = palette.brush(QPalette::Text);   // вынули кисть ИЗ палитры
+QColor textColor = palette.color(QPalette::Text);   // а из неё — цвет
