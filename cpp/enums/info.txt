@@ -1,0 +1,38 @@
+До 11 стандарта 
+
+An enum is a special type that represents a group of constants (unchangeable values). Как константы только обернутые в имя. 
+
+enum Data {
+    HOST,
+    SERVER
+}
+
+int main(){
+    int y = HOST;
+}
+
+Область видимости. Энумераторы не «протекают» в окружающий scope, обращение только через ColorS::Red. Значит, нет коллизий имён:
+тут сразу проблема если будет два енума с одинаковыми именами ВНТУРИ HOST в Data и HOST в Format (enum) то ошибка компиляции нарушение ODR
+
+enum Color { Red, Green };
+enum Fruit { Apple, Red };        // ошибка: Red переопределён
+
+enum class Color2 { Red, Green };
+enum class Fruit2 { Apple, Red }; // OK, разные области
+
+enum class Data{ }
+
+Data::HOST надо писать
+
+и вторая проблема в старом enum было неявное преобразование к int 
+
+
+enum Color { Red, Green, Blue };
+Color c = Red;
+int x = c;              // компилируется — опасно
+if (c == 1) { }         // тоже компилируется
+
+enum class ColorS { Red, Green, Blue };
+ColorS s = ColorS::Red;
+int y = s;              // ошибка компиляции
+int y = static_cast<int>(s);  // нужно явно
