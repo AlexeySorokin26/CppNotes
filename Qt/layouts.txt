@@ -1,0 +1,18 @@
+simple dialog
+
+
+QDialog* dialog = new QDialog();
+dialog.exec();
+
+
+Simple layouts 
+QVBoxLayout 
+-
+-
+-
+QHBoxLayout . . . 
+
+QGridLayout
+
+
+QFormLayout
