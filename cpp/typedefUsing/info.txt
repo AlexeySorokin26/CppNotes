@@ -1,20 +1,43 @@
 typedef — из C, то есть был всегда.
-typedef нельзя параметризовать шаблоном
-Решалось так
-template<typename StatInfo>
-struct MultiDict {
-    typedef std::multimap<std::string, StatInfo> type;
-};
-// использование: typename MultiDict<StatInfo>::type
-Тут кстати typename потому что dependent name and two-phase lookup
-Когда компилятор парсит тело шаблона, он ещё не знает, 
-чем является MultiDict<StatInfo> — тип зависит от параметра StatInfo, инстанцировать его на этом этапе нельзя. 
-Значит, он не может понять, что такое ::type внутри:
-вложенный тип (typedef, вложенный класс)?
-или статический член / значение?
 
-стандарт говорит: зависимое квалифицированное имя (X::something) считается не типом, если явно не написать typename
-То есть typename — это «поверь мне, это именно тип».
+Резолвинг имени (name binding) — это когда компилятор находит, 
+к какой конкретной сущности относится имя: к какой функции, переменной, типу, — и привязывает имя к этой сущности. 
+
+Для не-шаблонного случая using и typedef полностью эквивалентны — оба дают псевдоним (не новый тип), никакой семантической разницы. 
+Разница только в читаемости: 
+using Callback = void(*)(int); 
+против typedef void (*Callback)(int); — имя слева, а не закопано в середине.
+
+Вопрос зачем там писать typename 
+Проблема называется depenent name: тип или значение 
+MultiDict<StatInfo> является зависимым типом
+
+template<typename T>
+struct Wrap {
+    typedef T type;                    // здесь type — ТИП (псевдоним для T)
+};
+
+template<>
+struct Wrap<int> {
+    static constexpr int type = 100;   // здесь type — ЗНАЧЕНИЕ (int-константа)
+};
+
+template <typename T>
+void f() {
+    T::a * b;   // это умножение T::a на b, а НЕ объявление указателя!
+    typename T::a * b;  // вот теперь b — указатель на тип T::a
+}
+Компилятор в phase 1 не знает, что такое a внутри T, поэтому нужен явный typename.
+
+Симметричная проблема: зависимое имя по умолчанию считается не шаблоном, поэтому < парсится как «меньше».
+template <typename T>
+void f(T obj) {
+    obj.get<int>();           // ошибка: < понят как оператор сравнения
+    obj.template get<int>();  // ок
+}
+
+Wrap<double>::type → это тип double
+Wrap<int>::type → это значение 100
 
 Классический пример, откуда растёт неоднозначность:
 template<typename T>
@@ -28,12 +51,111 @@ T::x * y; читается двояко:
 выражение-умножение: T::x (статический член) умножить на y.
 это именно declaration-vs-expression неоднозначность
 
+
+На этапе парсинга компилятор не инстанцирует еще шаблон 
+MultiDict<StatInfo> это зависимый тип
+По умолчанию зависимое квалифицированное имя считает значение не типом (речь про type)
+
+type может быть 
+
+стандарт говорит: зависимое квалифицированное имя (X::something) считается не типом, если явно не написать typename
+То есть typename — это «поверь мне, это именно тип».
+
+
+Теперь про two-phase lookup
+Шаблон обрабатывается за два прохода не за один
+Phase 1 компилятор парсит код до инстанцинации 
+    проверяется синтаксис и резолвятся все non-dependen names 
+Phase 2 интсанцинация шаблон подставляется с конкертными аргументами 
+    резолвятся все dependent name
+
+
 using — C++11 (2011)
 template<typename StatInfo>
 using MultiDict = std::multimap<std::string, StatInfo>;
 
-Для не-шаблонного случая using и typedef полностью эквивалентны — оба дают псевдоним (не новый тип), никакой семантической разницы. 
-Разница только в читаемости: 
-using Callback = void(*)(int); 
-против typedef void (*Callback)(int); — имя слева, а не закопано в середине.
+typedef нельзя параметризовать шаблоном
+Решалось так
+template<typename StatInfo>
+struct MultiDict {
+    typedef std::multimap<std::string, StatInfo> type;
+};
+// использование: typename MultiDict<StatInfo>::type
 
+
+template<typename T>
+void f() {
+    std::vector<T>              a;   // зависит от T — typename НЕ нужен
+    MultiDict<StatInfo>         b;   // зависит       — typename НЕ нужен (alias template)
+    typename SomeClass<T>::type c;   // зависит       — typename НУЖЕН (доступ к члену через ::)
+}
+
+В C++ реально есть два разных термина, и они не синонимы:
+Dependent type — сам тип зависит от параметра. std::vector<T>, MultiDict<StatInfo> — dependent types. 
+И вот с ними-то, как ты верно почувствовал, никаких проблем нет — typename не нужен.
+
+Dependent name — имя, найденное поиском, чьё значение (что это за сущность) зависит от параметра. 
+SomeClass<T>::type — это dependent name. Не тип целиком, а именно имя type, добытое через ::.
+
+А правило C++ такое: если имя перед < — известный шаблон, то < всегда трактуется как открытие списка шаблонных аргументов, а не как «меньше». 
+Раз MultiDict — шаблон, < после него однозначно «начало аргументов». 
+Оператора сравнения тут не может быть по определению.
+
+Где < реально становится проблемой — это когда имя перед ним зависимое:
+
+template<typename T>
+void f() {
+    T::foo<int>();   // а вот ЗДЕСЬ беда: foo — это шаблон-член? или T::foo < int ?
+}
+
+Поэтому здесь язык требует подсказку template:
+T::template foo<int>();
+
+
+
+ЗАМЕТКА ИТОГОВАЯ
+
+
+Главное правило, одной строкой: typename (и его брат template) нужны ровно в одной ситуации — 
+когда у тебя зависимое::имя и надо разрешить, что это имя такое. 
+Нет ::-доступа за зависимым именем — вопрос вообще не возникает.
+
+dependent type — сам тип зависит от параметра: vector<T>, MultiDict<StatInfo>. С ними всё тихо, никаких ключевых слов не надо.
+dependent name — имя, добытое через :: внутри зависимого типа, чья природа неизвестна: Foo<T>::type. 
+Вот из-за него весь сыр-бор. Ключевое слово в названии — name: болит не «тип зависит», а «имя, вытащенное через ::, непонятно чем является».
+
+
+Два disambiguator'а — одна семья, отвечают на «что это за штука после ::?»:
+typename Foo<T>::type — «это тип» (иначе по умолчанию читается как значение).
+Foo<T>::template bar<int>() — «bar это шаблон» (иначе < читается как «меньше»).
+
+Что делает using: alias template параметризовать можно — это и есть прямая замена несуществующего «templated typedef».
+Правда от проблемы depenent name он не спасает 
+template<typename T>
+struct Wrap {
+    using type = T;      // хоть using, хоть typedef — неважно
+};
+
+template<typename T>
+void f() {
+    typename Wrap<T>::type x;   // typename ВСЁ РАВНО нужен
+}
+
+
+но вот тут 
+template<typename StatInfo>
+struct MultiDict {
+    typedef std::multimap<std::string, StatInfo> type;
+};
+// использование: typename MultiDict<StatInfo>::type
+а мы можем теперь сказать так 
+template<typename StatInfo>
+using MultiDict = std::multimap<std::string, StatInfo>;
+
+и использовать 
+MultiDict<StatInfo> m;  
+то есть мы убираем ::type
+то есть у нас вообще не возникает ситуации dependent name 
+
+
+https://www.youtube.com/watch?v=v6bSuBHQUq0
