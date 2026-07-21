@@ -1,0 +1,28 @@
+void foo(T* a, U* b);
+
+foo(new T(...), new U(...));
+
+почему тут плохо? да new может не дать память но это редкая пробелма
+хуже когда у нас в конткруторе полетело исключение 
+в общем случае порядок вызова операторов тут не определен 
+мы можем сначала вызвать конктрутор у T затем у U 
+затем выделить память а может и раньше 
+
+void foo(shared_ptr<SomeTrickyClass> a, shared_ptr<SomeTrickyClass> b);
+решение добавить умные указатели
+
+foo(shared_ptr<SomeTrickyClass>(new SomeTrickyClass(...)), shared_ptr<SomeTrickyClass>(new SomeTrickyClass(...)))
+НО тут все равно проблема мы все также может упасть в контсрукторе и даже не успеть создать умный указатели
+
+МОЖНО так 
+shared_ptr<SomeTrickyClass> a(new SomeTrickyClass(...));
+shared_ptr<SomeTrickyClass> b(new SomeTrickyClass(...));
+foo(a, b);
+так умные указатели точно созданы 
+УДОБНЕЕ
+foo(make_shared<SomeTrickyClass>(...), make_shared<SomeTrickyClass>(...));
+ну мы просто создаем в функции умный указатель 
+а если не создали то до второго и не дойдем
+ЭЛЕМЕНТАРНОЕ 
+
+ 
