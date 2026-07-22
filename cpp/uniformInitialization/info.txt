@@ -1,0 +1,36 @@
+Унифицированная инициализация
+    int playerScor{0};
+
+До с++11 было несколько типов инициализации
+    int x = 5;             // copy initialization
+    int y(5);              // direct init
+    int arr[] = {1, 2, 3}; // aggregate init
+    Widget w(1, 2);        // Constructor call
+
+int a[3](1, 2, 3);   // ОШИБКА: массив нельзя инициализировать круглыми скобками
+int a[3]{1, 2, 3};   // ОК
+
+struct Point { int x, y; };
+Point p(1, 2);       // ОШИБКА (до C++20): у Point нет конструктора
+Point p{1, 2};       // ОК всегда
+
+class Widget {
+    int data[3];
+public:
+    Widget() : data(1, 2, 3) {}   // ОШИБКА: так нельзя
+    Widget() : data = {1, 2, 3} {} // ОШИБКА: и так нельзя
+    Widget() : data{1, 2, 3} {}    // ОК — только фигурные скобки
+};
+
+ДО Widget() { data[0] = 1; data[1] = 2; data[2] = 3; }
+
+Что стало лучше 
+    1 Ловит сужающие преобразования 
+        int a = 3.14; // OK
+        int b{3.14}; // CE
+    2 Most vexing parse 
+        Widget w(); // это объялвние функции или создание объекта?
+        Widget w2{};
+Проблема с ним это с std::initializer_list он по дефолту будет идти раньше 
+    std::vector<int> a(3, 5);  // {5, 5, 5} — три элемента, все 5
+    std::vector<int> b{3, 5};  // {3, 5}    — ДВА элемента
