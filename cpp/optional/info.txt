@@ -1,0 +1,3 @@
+std::optional<std::string> a;                        // пусто
+std::optional<std::string> b = std::nullopt;         // пусто
+std::optional<std::string> c = "hello";              // "hello"
