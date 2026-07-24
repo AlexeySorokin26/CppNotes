@@ -1,0 +1,27 @@
+Как происходит возврат из функции
+
+X x = foo1();
+
+X foo1(){
+    return X();
+}
+// тут будет копирование без RVO
+X foo2(){
+    X value; 
+    return value;
+}
+// тут будет копирование при RVO 
+// но не будет при NRVO named return value optimization
+// компилятор воспользуется памятью которую мы выделили под X x = foo2(); 
+
+x foo3(){
+    X value1;
+    X value2;
+
+    return cond ? value1 : value2;
+}
+//  тут cond будет известен только в runtime поэтому мы не можем в compile time понять какой будет объект
+
+
+
+
