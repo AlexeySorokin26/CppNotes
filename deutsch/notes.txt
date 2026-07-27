@@ -1,3 +1,30 @@
+Окончания в немецком 
+    После определенного артикля
+    dieser jener mancher solcher welcher
+    Падеж	М	Ср	Ж	Мн
+    Nom	    -e	-e	-e	-en
+    Akk	    -en	-e	-e	-en
+    Dat	    -en	-en	-en	-en
+    Gen	    -en	-en	-en	-en
+
+    После неопределенного артикля
+    kein mein 
+    Падеж	М	Ср	Ж	Мн*
+    Nom	    -er	-es	-e	-en
+    Akk	    -en	-es	-e	-en
+    Dat	    -en	-en	-en	-en
+    Gen	    -en	-en	-en	-en
+
+    Когда нет артикля
+    viel wenig etwas mehr genug 
+    Падеж	М	Ср	Ж	Мн
+    Nom	    -er	-es	-e	-e
+    Akk	    -en	-es	-e	-e
+    Dat	    -em	-em	-er	-en
+    Gen	    -en	-en	-er	-er
+
+
+
 Akk перед Dat или наоборот
 	Два местоимения Akk vor Dativ bei zwei Personalpronommen  Akkusativpronomen vor Dativpronomen.
 		Ich interresiere mich für das Fahrrad. Kann ich es mir mal ansehen?
