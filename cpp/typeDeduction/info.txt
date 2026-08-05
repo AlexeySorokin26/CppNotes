@@ -1,0 +1,35 @@
+template<typename T>
+void f(T t) {
+    // Function implementation
+}
+
+int x = 10;
+int& y = x;
+const int& z = x;
+
+f(x); // T is deduced as int
+f(y); // T is deduced as int
+f(z); // T is deduced as int
+
+template<typename T>
+void f(T& t) {
+    // Function implementation
+}
+
+f(x); // T is deduced as int но внутри будет int&
+f(y); // T is deduced as int но внутри будет int&
+f(z); // T is deduced as int но внутри будет int const &!
+
+template<typename T>
+void f(T const& t) {
+    // Function implementation
+}
+
+f(x); // T is deduced as int но внутри будет int const &
+f(y); // T is deduced as int но внутри будет int const &
+f(z); // T is deduced as int но внутри будет int const &
+
+
+мы отбрасываем ссылку и константность при передаче аргументов в функцию, поэтому T будет deduced как int для всех вызовов функции f.
+
+auto вывод типов работает также 
