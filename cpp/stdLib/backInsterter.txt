@@ -1,0 +1,36 @@
+back_inserter
+
+std::back_inserter(c) — это функция, которая возвращает объект.
+std::back_insert_iterator<Container> — это тип самого объекта-итератора.
+Почему он считается итератором: он удовлетворяет требованиям концепта OutputIterator. То есть у него есть всё, 
+что алгоритм ожидает от output-итератора — operator*, operator++, operator=, и правильные тайпдефы в iterator_traits:
+
+Суть проблемы: output-итератор у алгоритма пишет «сквозь» присваивание — *out = value. 
+Если передать обычный dst.begin(), алгоритм будет писать поверх уже лежащих элементов и предполагает, что там достаточно места. 
+Для пустого вектора это UB (запись за пределы).
+
+*out = value;   // для back_insert_iterator это == container->push_back(value)
+
+std::vector<int> src = {1, 2, 3};
+
+// Неправильно — пишем за границы пустого вектора:
+std::vector<int> bad;
+std::copy(src.begin(), src.end(), bad.begin());   // UB
+
+// Правильно:
+std::vector<int> dst;
+std::copy(src.begin(), src.end(), std::back_inserter(dst));
+// dst == {1, 2, 3}, вектор вырос сам
+
+там поможет resize тоже 
+reserve нет 
+
+reserve меняет только capacity но не size то есть у нас все равно там нет объектов на которые можно писать.
+
+reserve выделит память но не создаст объекты, поэтому писать в них нельзя.
+resize(n) выделит и память и создаст объекты, поэтому писать в них можно. но там не очень делать
+лучше делать reserve и потом push_back или back_inserter
+
+std::vector<std::string> dst;
+dst.reserve(1000);   // только память, 0 конструкторов
+std::copy(src.begin(), src.end(), std::back_inserter(dst));  // 1000 copy-конструкторов

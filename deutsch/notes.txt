@@ -198,3 +198,14 @@ Ich freue mich über das schöne Wetter heute (Gegenwart und Vergangenheit)
 Ich ärgere mich über Politik
 Ich spreche über Fussball
 Ich träume von einem Haus 
+
+TEKAMOLO
+    Ich fahre heute wegen der Arbeit mit dem Auto nach Köln
+    Ich muss am Wochenende oft arbeiten
+
+Verneinung
+    Vor der Ortsanangabe
+    Nach der Zeitangabe
+        Ich komme morgen nicht nach Köln
+    Nach der Akkusativergänzung
+        Wir laden unsere Lehrerin nicht zum Essen ein.
