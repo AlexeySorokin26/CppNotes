@@ -1,0 +1,53 @@
+полиморфизм
+    статический compile time 
+        шаблоны перегрузка функции CRTP if constexpr 
+            нет vtable
+            инлайнинг 
+            объекту не нужен vptr для массива мелких элементов это много 
+
+            code bloat 
+            дольше компиляция
+            типы должны быть известны на этапе компиляции
+            ошибки шаблонов трудно читаемы
+
+// CRTP — "статические виртуальные функции"
+template <class Derived>
+struct Shape {
+    double area() const {
+        return static_cast<const Derived*>(this)->area_impl();
+    }
+};
+
+struct Circle : Shape<Circle> {
+    double r;
+    double area_impl() const { return 3.14159 * r * r; }
+};
+
+    динамический 
+        рантайм гибкость 
+        
+        память 
+        heap allocation
+
+struct Shape {
+    virtual double area() const = 0;
+    virtual ~Shape() = default;
+};
+
+struct Circle : Shape {
+    double r;
+    double area() const override { return 3.14159 * r * r; }
+};
+
+std::vector<std::unique_ptr<Shape>> shapes;  // гетерогенный контейнер
+
+CRTP 
+    Curiously Recurring Template Pattern
+    "Любопытно повторяющийся шаблон"
+    шаблонный базовый класс, который принимает производный класс в качестве параметра шаблона
+    
+template <class Derived>
+struct Base { /* ... */ };
+
+struct Foo : Base<Foo> { /* ... */ };   // вот это оно
+//           ^^^^^^^^^^ Foo передаёт сам себя как параметр
