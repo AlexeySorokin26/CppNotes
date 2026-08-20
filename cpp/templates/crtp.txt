@@ -1,0 +1,15 @@
+CRTP идиома для статического полимиорфизма 
+Базовый класс паратмеризуется своим же наследником 
+
+
+Шаг 1. Компилятор дошёл до template<class derived_t> struct comparable {...}. Тело парсится (проверяется синтаксис) и связываются имена, не зависящие от derived_t (two-phase lookup, фаза 1). 
+Кода не рождается — в памяти остаётся только выкройка. Всё зависимое от derived_t откладывается: rhs < derived() и static_cast<derived_t&>(*this) на смысл сейчас не проверяются, потому что derived_t ещё неизвестен. Итог: рецепт распознан, инстанциаций ноль.
+
+Шаг 2. Строка struct point : comparable<point>. 
+Чтобы объявить point, база обязана быть полным типом → запускается неявная инстанциация класса comparable<point>. 
+Подставляется derived_t = point, порождаются члены, их раскладка и объявления (сигнатуры) всех методов. Тела на этом шаге не инстанцируются.
+ПРИКОЛ в том что мы не создаем методов у родителя так создаются шаблоны 
+
+
+First, at the point of the template definition, the template is checked for syntax.
+Second, at the point of instantiation, the template argument is substituted in for the template parameter, instantiating the template
