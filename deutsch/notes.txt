@@ -111,6 +111,20 @@ Zeit Wie spöt ist es? Wie viel Uhr ist es? Wann triffst du mich? Wie lange daue
     viertel nach fünf 5-15
     kurz von fünf 4-58
     zwanzig vor fünf 4-40
+Zeit
+    vor sechs Monaten (ago) в начало не в конец ставь! 
+        Ich bin vor sechs Monaten nach Deutschland gekommen.
+    Mit sechs Monaten (в 6 месяцев)
+        Mit sechs Monaten kann ich schon sprechen.
+    In sechs Monaten 
+        In sechs Monaten kann ich fliegen
+    Seit sechs Monaten 
+        Ich wohne in Deutschland seit 6 Monaten
+    Nach sechs Monaten
+        Nach sechs Monaten kann ich wider spielen
+    Für 6 Monaten
+        Ich fliege für 6 Monaten nach Russland 
+    Sech Monaten lang
 
 der Körper und das Gesicht
     der Kopf голова
