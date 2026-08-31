@@ -1,7 +1,0 @@
-универсальная ссылка 
-
-template<typename Body>
-static void ParallelRegion(Body&& body) {
-
-
-}
