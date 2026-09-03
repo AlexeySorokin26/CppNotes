@@ -1,3 +1,94 @@
+int main(){
+
+    template<typename T>
+    void f(T param);
+    // Для ТАКОГО СЛУЧАЯ
+    // 1. Ссылочная часть игнорируется
+    // 2. Модификаторы тоже игнорируются (const, violate)
+
+    int x = 10;
+    f(x)    // T = int; paramType = int;
+
+    const int cs = x;
+    f(cs)   // T = int; paramType = int;
+
+    const int& rx = x;
+    f(rx)   // T = int; paramType = int;
+
+    const char *const ptr  = "hello";
+    f(ptr); // T = const char*; paramType = const char*; 
+}
+
+template<typename T>
+void f(T& param);
+
+
+int main(){
+    template<typename T>
+    void f(T& param);
+    // Для ТАКОГО СЛУЧАЯ
+    // 1. Ссылочная часть игнорируется чтобы убрать два &&
+    // 2. Модификаторы СОХРАНЯЮТСЯ (const, violate)
+
+    int x = 10;
+    f(x)    // T = int; paramType = &int;
+
+    const int cs = x;
+    f(cs)   // T = const int; paramType = const &int;
+
+    const int& rx = x;
+    f(rx)   // T = const int; paramType = const &int; // вторая ссылка как бы отбрасывается
+
+    const char *const ptr  = "hello";
+    f(ptr); // T = const char* const; paramType = const char* const&; 
+
+}
+
+
+int main(){
+    template<typename T>
+    void f(T&& param);
+
+    f(27); // T - int, paramType - int&&
+
+    // Ref colapsing 
+    // T& &&  - & 
+    // T&& &  - &
+    // T& &   - &
+    // T&& && - &&
+
+    int x = 10;
+    // Тут очередное ПРАВИЛО если x lvalue то T = int& а дальше уже ref collapsing
+    f(x);  // T - int&, paramType - int& 
+
+    const int cx = x;
+    f(cx); // T - const int&, paramType - cosnt int&
+
+    const int &rx = x;
+    f(rx); // T - const int&, paramType - const int&
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 template<typename T>
 void f(T t) {
     // Function implementation
