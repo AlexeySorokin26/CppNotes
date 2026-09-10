@@ -1,3 +1,27 @@
+Namen 
+    Oskar Berlin
+Nomen 
+    Buch Deutschkurs Liebe 
+Artikel
+    der die das
+Verben  
+    lesen 
+Adjektive 
+    lang, interessant
+Pronomen
+    ich, du, mich, mir
+Präpositionen
+    auf, unter
+Konjunktionen
+    und, aber 
+Sätze
+    Ich arbeite bei SAP
+        Aussagesatz повествовательное предложение
+        W-Fragen    
+        Ja-nein Frage
+        Imperativsatz
+
+
 Окончания в немецком 
     После определенного артикля
     dieser jener mancher solcher welcher
@@ -28,8 +52,7 @@
 Akk перед Dat или наоборот
 	Два местоимения Akk vor Dativ bei zwei Personalpronommen  Akkusativpronomen vor Dativpronomen.
 		Ich interresiere mich für das Fahrrad. Kann ich es mir mal ansehen?
-	Два сущ Dat vor Akk 
-		Ich gebe dem Mann das Buch
+	Два сущ Dat vor Akk Ich gebe dem Mann das Buch
 	Микс всегда местоимение первым 
 		Ich gebe ihm das Buch
 		Ich gebe es dem Mann
@@ -111,6 +134,8 @@ Zeit Wie spöt ist es? Wie viel Uhr ist es? Wann triffst du mich? Wie lange daue
     viertel nach fünf 5-15
     kurz von fünf 4-58
     zwanzig vor fünf 4-40
+    Um wie viel Uhr beginnt der Film?
+    Wie viel Uhr ist es?
 Zeit
     vor sechs Monaten (ago) в начало не в конец ставь! 
         Ich bin vor sechs Monaten nach Deutschland gekommen.
@@ -223,6 +248,12 @@ Ich träume von einem Haus
 TEKAMOLO
     Ich fahre heute wegen der Arbeit mit dem Auto nach Köln
     Ich muss am Wochenende oft arbeiten
+    Er fährt im Winter gern Ski 
+        Im Winter Temporal 
+        gern Modal 
+        Ski это не обстоятельство а объект (дополнениие) и обычно стоит после обстоятельств
+    Besuchst du oft deine Familie?
+        тут опять deine Familie это дополнение но можно и наоборот 
 
 Verneinung
     Vor der Ortsanangabe
@@ -230,3 +261,35 @@ Verneinung
         Ich komme morgen nicht nach Köln
     Nach der Akkusativergänzung
         Wir laden unsere Lehrerin nicht zum Essen ein.
+
+Temporal
+    Dativ  
+        an/am   Wir beginnen unseren Kurs am 1. März
+        ab      Ab dem 20. Juli bin ich in Ferien
+        in/im   Im Sommer machen wir unser Fest
+        Nach    Nach meiner Lehre habe ich drei Monate Urlaub gemacht
+        Seit    Ich lebe seit 12 Monataten in Deutschland
+        Von-bis Vom elften Juni bis zum dritten Juli muss ich jeden Tag arbeiten
+        Vor     Vor dem Unterricht können wir noch eine Pizza essen gehen
+        Zu-zum  Viele Deutsche essen zum Frühstück gern Tasstbrot mit Mermelade
+    Akkusativ
+        bis     Schreiben Sie bitte bis nächsten Montag Ihren Lebenslauf als Tabelle
+        für     2015 war ich für einen Monat in der Schweiz
+        über    Ich habe über eine Stunde für den Lebenslauf gebraucht
+        um      Der Film beginng um 20 Uhr und ist erst um 23 Uhr zu Ende
+    über > für тип дольше чем час например а für это ровно месяц 
+Lokal
+    Dativ  
+        an       Das Fahrrad steht an der Haltestelle
+        auf      Das Essen steht auf dem Tisch
+        aus      Birsen kommt aus der Türkei
+        bei      Wir essen bei unseren Freunden
+        Hinter   Der Park ist gleich hinter dem Haus
+        In       Wir machen ein Picknick im Park
+        Nach     Der Zug fährt nach Berlin
+        Neben    Ich parke mein Aufot neben der Apotheke
+        Unter    Das Buch liegt unter der Zeitung
+        Über     Die Lampe hängt über dem Tisch
+        Vor      Wir treffen uns heut Abend vor dem Kino
+        Zu       Ich gehe heute zu meiner Freundin
+        Zwischen Zwischen Köln und Bonn fährt eine Bahnhof
