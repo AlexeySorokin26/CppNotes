@@ -6,6 +6,12 @@ decltype(c[i]) f(Container c, Index i);
 template <typename Container, typename Index>
 auto f(Container c, Index i) -> decltype(c[i])
 
+или так 
+template <typename Container, typename Index>
+decltype(auto) f(Container c, Index i) 
+
+decltype накинет ссылку константу 
+
 
 а зачем вообще так мучаться?
 оказывается разные контейнеры типа вектора возвращают разные 
