@@ -14,6 +14,8 @@ Präpositionen
     auf, unter
 Konjunktionen
     und, aber 
+Adverb наречие
+    gern heute 
 Sätze
     Ich arbeite bei SAP
         Aussagesatz повествовательное предложение
@@ -286,10 +288,13 @@ Lokal
         bei      Wir essen bei unseren Freunden
         Hinter   Der Park ist gleich hinter dem Haus
         In       Wir machen ein Picknick im Park
+                 Ich wohne in der Nizzaallee
         Nach     Der Zug fährt nach Berlin
         Neben    Ich parke mein Aufot neben der Apotheke
         Unter    Das Buch liegt unter der Zeitung
         Über     Die Lampe hängt über dem Tisch
         Vor      Wir treffen uns heut Abend vor dem Kino
         Zu       Ich gehe heute zu meiner Freundin
+                 Bitte zur Nizzaallee
+                       zum Platz
         Zwischen Zwischen Köln und Bonn fährt eine Bahnhof

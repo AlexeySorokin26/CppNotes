@@ -1,0 +1,14 @@
+template <typename Container, typename Index>
+decltype(c[i]) f(Container c, Index i);
+
+но компилятор еще не знает что такое c и i 
+
+template <typename Container, typename Index>
+auto f(Container c, Index i) -> decltype(c[i])
+
+
+а зачем вообще так мучаться?
+оказывается разные контейнеры типа вектора возвращают разные 
+вектор интов вернет ссылку 
+а булей другое 
+и decltype тут помогает 
