@@ -1,3 +1,21 @@
+N A D RflxA FflxD
+ich mich mir   mich mir 
+du  dich dir   dich dir
+er  ihn  ihm   sich sich
+sie sie  ihr   sich sich
+es  es   ihm   sich sich
+wir uns  uns   uns  uns
+ihr euch euch  euch euch
+Sie Sie  Ihnen Sich Sich
+sie sie  ihnen sich sich 
+
+    A 
+        Ich besuche dich
+        Ich besuche ihn
+        Ich besuche sie 
+        Ich besuche uns 
+
+
 Namen 
     Oskar Berlin
 Nomen 
@@ -54,7 +72,8 @@ Sätze
 Akk перед Dat или наоборот
 	Два местоимения Akk vor Dativ bei zwei Personalpronommen  Akkusativpronomen vor Dativpronomen.
 		Ich interresiere mich für das Fahrrad. Kann ich es mir mal ansehen?
-	Два сущ Dat vor Akk Ich gebe dem Mann das Buch
+	Два сущ Dat vor Akk 
+        Ich gebe dem Mann das Buch
 	Микс всегда местоимение первым 
 		Ich gebe ihm das Buch
 		Ich gebe es dem Mann
