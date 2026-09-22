@@ -1,5 +1,6 @@
 Поиск Кенинга (ADL)
     Argument dependent name lookup
+    https://www.youtube.com/watch?v=TxgPZXe8XTo
 
 ADL (Argument-Dependent Lookup, он же «поиск Кёнига» по имени Эндрю Кёнига) 
 — это правило, по которому при неквалифицированном вызове функции компилятор ищет её имя 
