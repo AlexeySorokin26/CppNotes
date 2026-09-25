@@ -1,7 +1,4 @@
-    LValue выражение описыывающее не временный объект чаще всего именнованный
-    У него можно взять адрес
-    RValue выражение описывающее временный объект или return выражение 
-
+Пример где оно выскакивает
 
     void push_back(const T& v){
         ...
@@ -9,3 +6,71 @@
     }
 
     vec.push_back(SomeClass{}); // констр копирования 
+
+
+Lvalue это то что стоит ТОЛЬКО слева?
+    int x = 10; ok 
+    int y = x; not ok 
+Rvalue справа?
+Rvalue это то чему нельзя присвоить, а lvalue можно?
+    const int x = 10;
+    x = 5; not ok
+Вид value относится не к типу а к выражению 
+У любого выражения есть два свойства 
+    его тип и его категория value 
+
+1. Любой обхъект имеющий имя и существующий в памяти это lvalue
+вне зависимости от его типа
+int x; int& y; int&& a;
+
+1. Любой временный обхект rvalue 
+4, 'a', MYClass{}, std::string("Hi")
+
+2. Если результат вызоыва функции lvalue& то это lvalue 
+int& getx(){return x;}
+
+2. Если возвращается по rvalue ссылке или нет ссылки это rvalue
+int&& getx(){return std::mvoe(x);}
+int getX(){return x;}
+
+3. Любой каст к lvalue& это lvalue и наборот
+
+LValue& не коснтантую можно связывать только с lvalue ВЫРАЖЕНИЕМ
+int x = 1;
+int& rx = x; 
+Rvalue&& можно связывать только с rvalue ВЫРАЖЕНИЕМ 
+int&& r = 1;
+
+int&& a = r; not ok since r here is lvalue (it has a name)
+int& a = r; ok since r is lvalue
+
+
+
+проблемки
+
+void bar(int&& a);
+void bar(int& a);
+
+ну тут все ок дали rvalue пошли в одно и другое 
+а если параметров несколько? 
+писать несколько функций?
+
+void f(A& a, B& b){}
+f(a, b);
+f(A{}, b);
+
+решение 
+универсальные ссылки 
+template <typename T>
+void foo(T&& x){ // kind of new type called universal ref but without actual standard name
+}
+
+теперь мы можем передать туда и lvalue и rvalue 
+fo(5);
+foo(x);
+работает исключительно для аргумента внутри функции 
+
+
+
+
+
