@@ -171,6 +171,7 @@ Zeit
     Für 6 Monaten
         Ich fliege für 6 Monaten nach Russland 
     Sech Monaten lang
+Der Zug kommt um 18 Uhr in Bochum
 
 der Körper und das Gesicht
     der Kopf голова
@@ -233,6 +234,13 @@ Wege finden
     Gehen Sie den Damm entlang
     Am Stieg vorbei 
 
+Nach oder zu
+    Nach + Stadt/laden
+        Ich fahre nach Moskau / nach Russland
+    Zu + Person/Ort/Platz
+        Ich gehe zu Familie Schmidt
+        Ich fahre zum Schillerplatz 
+        Ich gehe zur Schule
 
     
 Zeit
@@ -317,3 +325,16 @@ Lokal
                  Bitte zur Nizzaallee
                        zum Platz
         Zwischen Zwischen Köln und Bonn fährt eine Bahnhof
+
+Datum 
+    der Heute ist der 14. März. Morgen ist Mittwoch, der 14. März.
+    den Ich habe den 14. März frei.  Sie können den 7. November 2019 zu uns kommen.
+    dem am 14. März
+
+Flug Bahn Stadt
+    die Auskunft справка
+    das Gleis путь для поезда
+    der Banhsteig платформа для людей
+    die Abfahrt abfahren
+    die Ankunft ankommen
+    der Abflug abfliegen 
