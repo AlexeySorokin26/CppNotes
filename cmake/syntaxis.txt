@@ -1,0 +1,55 @@
+функции 
+function(funcName) ... endfunction()
+ARGN встроенная переменная внутри функции в ней будут все переданные аргументы 
+
+как дать аргументы явно
+1 Позиционные аргументы
+function(funcName arg1 arg2)
+    message(STATUS "first ${arg1}, second ${arg2})
+endfunction()
+
+вызов функции 
+funcName(hello world)
+
+2 Именнованные через cmake_parse_arguments
+function(funcName)
+    cmake_parse_arguments(ARG "REPORT_ONLY" "" "DIRS" ${ARGN})
+    message(STATUS "REPORT_ONLY = ${ARG_REPORT_ONLY}")
+    message(STATUS "DIRS        = ${ARG_DIRS}")
+endfunction()
+
+cmake_parse_arguments
+    ARG префикс для создаваемых переменных: ARG_REPORT_ONLY, ARG_DIRS
+    "REPORT_ONLY"	ключевое слово флаг: слово без значения, есть или нет → TRUE/FALSE
+    ""	одно значение: KEY value (у нас таких нет, поэтому пусто)
+    "DIRS"	несколько значений: KEY a b c, всё до следующего ключевого слова
+    ${ARGN}	что разбирать: все аргументы, переданные в функцию
+примеры
+grit_check_layering(DIRS GUI REPORT_ONLY)	ARG_REPORT_ONLY TRUE	ARG_DIRS GUI
+grit_check_layering(DIRS GUI General)	    ARG_REPORT_ONLY FALSE	ARG_DIRS GUI;General
+grit_check_layering(REPORT_ONLY)	        ARG_REPORT_ONLY TRUE	ARG_DIRS пусто
+
+cmake_parse_arguments(ARG "REPORT_ONLY" "MODE" "DIRS" ${ARGN})
+вызов:  grit_check_layering(MODE strict DIRS GUI General)
+
+ARG_REPORT_ONLY = FALSE         (флага в вызове нет)
+ARG_MODE        = strict        (одно значение)
+ARG_DIRS        = GUI;General   (много значений)
+
+
+get_property
+get_property(result DIRECTORY ${dir} PROPERTY BUILDSYSTEM_TARGETS)
+Читает свойство и кладёт его значение в переменную. Читается так: «положи в result свойство папки ${dir}, которое называется BUILDSYSTEM_TARGETS». 
+Слова DIRECTORY и PROPERTY — ключевые слова, как в cmake_parse_arguments. 
+Вместо DIRECTORY бывают TARGET, GLOBAL и другие.
+
+BUILDSYSTEM_TARGETS	таргеты, объявленные в этой папке (без подпапок)
+SUBDIRECTORIES	подпапки, подключённые через add_subdirectory
+
+define_property(DIRECTORY   PROPERTY GRIT_LAYER   INHERITED   BRIEF_DOCS "..." FULL_DOCS "...")
+#               │           │                     │           │
+#               1. к чему   2. имя свойства       3. наследовать  4. описание
+
+get_target_property(dir     ${tgt}        SOURCE_DIR)
+#                   │       │             │
+#                   1. куда 2. у кого     3. что читать
