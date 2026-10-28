@@ -42,8 +42,38 @@ void f(T t) {
 Теперь зачем using 
 Typedef нельзя сделать шаблоном это раз (можно но выглядит жестко)
 typedef так не умеет, поэтому оборачивали в структуру
+
+хотелось просто 
+template<typename T>
+typedef vec std::vector<T, MyAlloc<T>>;
+
+но typedef не шаблонизирован
+поэтому делаем такой костыль
+
 template<class T>
 struct Vec { typedef std::vector<T, MyAlloc<T>> type; };
+
+используем 
+class A{
+    vec<int>::type v;
+}
+
+но если у нас внутри шаблон уже не собирается 
+template<typename T>
+class A{
+    vec<T>::type v; // проблема зависимых типов по дефолту он будет думать что это значение некоторое (переменная грубо)
+                    // мы же можем сделать переменную type например (так думает компилятор по дефолту) но найти ее не может
+    
+    // typename vec<T>::type v; // fix 
+}
+
+с using не нужно будет писать typename для компилятора 
+template<typename T>
+using vec = std::vector<T, MyAlloc<T>>; 
+это исключительно название типа     
+
+
+
 
 Классический пример, откуда растёт неоднозначность:
 template <typename T>
