@@ -379,3 +379,11 @@ Wenn ich komme, wird der Film schon angefangen haben
 Когда я приду фильм уже начнется
 Sie wird sich Sorgen gemacht haben Она должно быть испереживалась 
 Wpher kommt Jan yetzt? Et wird einkaufen gewesen sein Он должно быть пошел в магазин
+
+Kennen vs Wissen
+В русском для знания человека и факта нет разницы
+В немецком kennen означает знакомство с человеком местом предметом
+Wissen с фактом сведением 
+Ich kenne Frau Schmitz
+Ich weiss das
+
